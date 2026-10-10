@@ -34,15 +34,3 @@ desktop.ini
 .idea/
 *.swp
 *~
-
-# Local proxy node configuration (copy from *.example; never commit credentials)
-/Quick/config.yaml
-/Xray/config.json
-/clash.meta/config.yaml
-/hysteria/config.json
-/hysteria2/config.json
-/juicity/config.json
-/mieru/config.json
-/naiveproxy/config.json
-/shadowquic/client.yaml
-/singbox/config.json

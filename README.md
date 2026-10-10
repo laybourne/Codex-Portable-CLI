@@ -8,7 +8,7 @@
 [![Windows Terminal](https://img.shields.io/badge/Integrated-Windows%20Terminal-blueviolet.svg)](https://github.com/microsoft/terminal)
 
 > [!IMPORTANT]
-> 公开版本只包含代理配置模板，不包含可用节点。启动前请先运行 `setup-configs.cmd`，再把自己合法持有的节点信息填入对应配置文件。`Data/` 和实际配置文件均已被 Git 忽略。
+> 本仓库公开提供代理节点配置，节点可能随时失效。Codex 登录凭据与会话保存在 `Data/`，该目录已被 Git 忽略。请勿把个人私密凭据提交到公开仓库。
 
 ---
 
@@ -22,7 +22,7 @@ OpenAI 推出的 **Codex CLI** 是一款革命性的命令行智能编程助手�
 4. **升级与维护困难**：官方二进制迭代频繁，手动下载、替换、重配路径效率低下。
 
 ### 解决方案
-**Codex-Portable-CLI** 提供了一套**便携化、十核冗余**的 Windows 解决方案。它将 10 种业界主流的低延迟代理核心、动态 HTTP 桥接调度器、便携版 Windows Terminal 以及官方一键升级机制整合成一个绿色独立的目录体系。开发者配置自己的代理节点后，可通过启动脚本进入 OpenAI Codex 交互终端。
+**Codex-Portable-CLI** 提供了一套**便携化、十核冗余**的 Windows 解决方案。它将 10 种业界主流的低延迟代理核心、动态 HTTP 桥接调度器、便携版 Windows Terminal 以及官方一键升级机制整合成一个绿色独立的目录体系。开发者可直接尝试公开节点，也可配置自己的代理节点，然后通过启动脚本进入 OpenAI Codex 交互终端。
 
 ---
 
@@ -74,7 +74,7 @@ OpenAI 推出的 **Codex CLI** 是一款革命性的命令行智能编程助手�
 
 ### 5. 🧳 便携数据隔离
 - **环境隔离**：通过定向挂载 `$env:CODEX_HOME = "Data/codex"`，所有用户登录凭据（`auth.json`）、会话上下文、插件和日志均集中存放在 `Data/` 目录中，不修改也不污染用户系统的 `%USERPROFILE%`。
-- **安全开源**：`Data/` 与实际代理配置文件在 `.gitignore` 中排除。提交前仍应检查 `git status`，避免将凭据复制进其他受跟踪文件。
+- **安全开源**：公开节点配置已纳入仓库；`Data/` 仍在 `.gitignore` 中排除。提交前请检查 `git status`，不要把个人凭据复制进受跟踪文件。
 
 ### 6. 🔄 直连官方 GitHub Releases 的全自动更新
 配套 `update.cmd`（`App/update.ps1`），利用 `curl.exe` 直连 GitHub：
@@ -126,11 +126,11 @@ cd Codex-Portable-CLI
 > [!TIP]
 > 以后任何时候只要官方 Codex 或 Windows Terminal 发布新版本，重新双击运行 `update.cmd` 即可无痛原地升级。
 
-### 4. 第二步：配置自己的代理节点并启动
+### 4. 第二步：选择通道并启动
 
-先运行 `setup-configs.cmd`，然后打开所选核心目录下的 `config.json`、`config.yaml` 或 `client.yaml`，将 `example.com` 和 `REPLACE_WITH_...` 替换为自己的节点参数。启动脚本也会在首次运行时自动复制缺失的模板，但模板本身不能连接网络。
+仓库已包含公开节点配置，可直接选择通道启动。若节点失效，可使用 `ip_Update` 脚本更新，或编辑所选核心目录下的 `config.json`、`config.yaml`、`client.yaml` 配置自己的节点。`*.example` 是无凭据模板；仅在实际配置缺失时，`setup-configs.cmd` 或启动脚本才会复制它。
 
-配置完成后选择通道启动：
+选择通道启动：
 在项目根目录中，根据您的网络偏好双击对应的启动脚本（如 **`1.clash.meta.cmd`** 或 **`6.hysteria2.cmd`**）：
 
 1. **节点更新提示**：
@@ -162,7 +162,7 @@ cd Codex-Portable-CLI
 ## 🛠️ 进阶配置与自定义
 
 ### 自定义您自己的私人代理节点
-如果您拥有自己的自建节点或订阅，先运行 `setup-configs.cmd`，再编辑对应核心的本地配置文件即可：
+如果您拥有自己的自建节点或订阅，可编辑对应核心的配置文件。仓库中的配置已被 Git 跟踪；请勿将私人节点凭据提交到公开仓库。
 - **Clash.Meta**：编辑 `clash.meta/config.yaml`
 - **Xray**：编辑 `Xray/config.json`
 - **sing-box**：编辑 `singbox/config.json`
@@ -172,7 +172,7 @@ cd Codex-Portable-CLI
 修改完成后，无需额外配置，双击对应的 `.cmd` 启动脚本即可生效。
 
 ### 本地数据的备份与多机器迁移
-所有的用户持久化数据（登录信息、聊天记录、会话缓存）全部存储于 `Data/` 目录中：
+Codex 登录信息、聊天记录和会话缓存存储于 `Data/` 目录中：
 - **完整备份**：只需备份 `Data/codex/` 文件夹即可完整保留所有设置与登录态。
 - **跨机器使用**：将整套目录拷贝至 U 盘或移动硬盘，在任何 Windows 设备上双击即可直接免登录使用。
 - **重置环境**：若需彻底重置登录态，清空 `Data/codex/` 目录即可。
@@ -204,8 +204,8 @@ Codex-Portable-CLI/
 ├── update.cmd                  # [核心运维] 官方 Codex & Windows Terminal 一键更新
 ├── 停止代理.cmd                # [核心运维] 一键安全关闭所有后台代理守护进程
 ├── wget.exe                    # 节点更新批处理底层下载工具
-├── .gitignore                  # Git 忽略运行数据、实际代理配置与超大包
-├── setup-configs.cmd           # 从公开模板创建本地代理配置
+├── .gitignore                  # Git 忽略运行数据与超大包
+├── setup-configs.cmd           # 实际配置缺失时从模板创建配置
 ├── LICENSE                     # MIT 开源协议
 ├── README.md                   # 详细使用说明文档
 │
@@ -260,7 +260,7 @@ Codex-Portable-CLI/
 
 - **100% 本地托管**：本套件不架设任何中间收集服务器，所有请求直接由您的本地核心对接 OpenAI 官方。
 - **零全局污染**：不修改 Windows 注册表，不强行修改系统全局网络代理。代理参数仅注入当前 Codex 会话的进程环境变量中。
-- **凭据隔离**：登录数据存放在 `Data/`，代理节点实际配置文件也被 Git 忽略。提交前请复查文件变更，防止将敏感信息写入其他文件。
+- **凭据隔离**：Codex 登录数据存放在 `Data/`，该目录被 Git 忽略。代理节点配置是公开文件；提交前请复查文件变更，避免加入私人凭据。
 
 ---
 
