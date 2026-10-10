@@ -1,0 +1,9 @@
+*.exe binary
+*.dll binary
+*.dat binary
+*.db binary
+*.mmdb binary
+*.ttf binary
+*.png binary
+*.ico binary
+*.pri binary

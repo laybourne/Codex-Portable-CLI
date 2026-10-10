@@ -1,0 +1,26 @@
+{
+  "server": "example.com:443",
+  "auth": "REPLACE_WITH_NODE_PASSWORD",
+  "bandwidth": {
+    "up": "11 mbps",
+    "down": "55 mbps"
+  },
+  "tls": {
+    "sni": "example.com",
+    "insecure": true
+  },
+  "quic": {
+    "initStreamReceiveWindow": 16777216,
+    "maxStreamReceiveWindow": 16777216,
+    "initConnReceiveWindow": 33554432,
+    "maxConnReceiveWindow": 33554432
+  },
+  "socks5": {
+    "listen": "127.0.0.1:1080"
+  },
+  "transport": {
+    "udp": {
+      "hopInterval": "30s"
+    }
+  }
+}
