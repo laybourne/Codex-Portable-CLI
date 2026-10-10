@@ -159,25 +159,13 @@ cd Codex-Portable-CLI
 
 ---
 
-## 🛠️ 进阶配置与自定义
-
-### 自定义您自己的私人代理节点
-如果您拥有自己的自建节点或订阅，可编辑对应核心的配置文件。仓库中的配置已被 Git 跟踪；请勿将私人节点凭据提交到公开仓库。
-- **Clash.Meta**：编辑 `clash.meta/config.yaml`
-- **Xray**：编辑 `Xray/config.json`
-- **sing-box**：编辑 `singbox/config.json`
-- **Hysteria 2**：编辑 `hysteria2/config.json`
-- **NaiveProxy**：编辑 `naiveproxy/config.json`
-
-修改完成后，无需额外配置，双击对应的 `.cmd` 启动脚本即可生效。
-
-### 本地数据的备份与多机器迁移
+## 本地数据的备份与多机器迁移
 Codex 登录信息、聊天记录和会话缓存存储于 `Data/` 目录中：
 - **完整备份**：只需备份 `Data/codex/` 文件夹即可完整保留所有设置与登录态。
 - **跨机器使用**：将整套目录拷贝至 U 盘或移动硬盘，在任何 Windows 设备上双击即可直接免登录使用。
 - **重置环境**：若需彻底重置登录态，清空 `Data/codex/` 目录即可。
 
-### 高级命令行调用
+## 高级命令行调用
 除了通过根目录的 `.cmd` 双击运行外，您还可以通过 PowerShell 脚本进行参数化自定义启动：
 
 ```powershell
