@@ -128,7 +128,7 @@ cd Codex-Portable-CLI
 
 ### 4. 第二步：选择通道并启动
 
-仓库已包含公开节点配置，可直接选择通道启动。若节点失效，可使用 `ip_Update` 脚本更新，或编辑所选核心目录下的 `config.json`、`config.yaml`、`client.yaml` 配置自己的节点。`*.example` 是无凭据模板；仅在实际配置缺失时，`setup-configs.cmd` 或启动脚本才会复制它。
+仓库已包含公开节点配置，可直接选择通道启动。若节点失效，可使用 `ip_Update` 脚本更新，或编辑所选核心目录下的 `config.json`、`config.yaml`、`client.yaml` 配置自己的节点。
 
 选择通道启动：
 在项目根目录中，根据您的网络偏好双击对应的启动脚本（如 **`1.clash.meta.cmd`** 或 **`6.hysteria2.cmd`**）：
@@ -205,7 +205,6 @@ Codex-Portable-CLI/
 ├── 停止代理.cmd                # [核心运维] 一键安全关闭所有后台代理守护进程
 ├── wget.exe                    # 节点更新批处理底层下载工具
 ├── .gitignore                  # Git 忽略运行数据与超大包
-├── setup-configs.cmd           # 实际配置缺失时从模板创建配置
 ├── LICENSE                     # MIT 开源协议
 ├── README.md                   # 详细使用说明文档
 │

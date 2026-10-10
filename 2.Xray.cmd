@@ -2,7 +2,6 @@
 setlocal EnableExtensions EnableDelayedExpansion
 chcp 936 >nul 2>&1
 cd /d "%~dp0"
-call "%~dp0setup-configs.cmd" >nul
 
 rem 关键路径校验
 if not exist "%~dp0Xray" (
